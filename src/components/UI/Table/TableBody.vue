@@ -4,7 +4,7 @@ import type { TableColumns, TableRowKey, TableExpand, TableColor } from './type.
 import TableCell from './TableCell.vue'
 import CheckBox from '@/components/Control/CheckBox/CheckBox.vue'
 
-interface TableHeadProps<M> {
+export interface TableBodyProps<M> {
   dataSource: M[]
   columns: TableColumns<M>
   color: TableColor
@@ -15,7 +15,7 @@ interface TableHeadProps<M> {
   expand?: TableExpand
 }
 
-const props = withDefaults(defineProps<TableHeadProps<M>>(), {
+const props = withDefaults(defineProps<TableBodyProps<M>>(), {
   color: 'blue',
   rowKey: '',
   rowSelectedKeys: () => [],
@@ -70,7 +70,9 @@ const handleExpand = (key: TableRowKey) => {
 
         <td v-for="column in columns">
           <TableCell v-if="column.component">
-            <component :is="column.component(data, idx).node" v-bind="column.component(data, idx).props" />
+            <component :is="column.component(data, idx).node" v-bind="column.component(data, idx).props">
+              {{ column.component(data, idx).slotContent }}
+            </component>
           </TableCell>
 
           <TableCell v-else-if="column.render" v-html="column.render(data, idx)"></TableCell>

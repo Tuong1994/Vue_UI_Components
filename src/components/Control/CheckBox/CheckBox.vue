@@ -16,7 +16,7 @@ export interface CheckBoxProps {
   labelStyle?: StyleValue
   controlStyle?: StyleValue
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'red' | 'gray'>
+  color?: Exclude<ComponentColor, 'gray'>
   value?: string | number | boolean
   name?: string
   checked?: boolean

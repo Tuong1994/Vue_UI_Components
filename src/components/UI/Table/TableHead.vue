@@ -8,7 +8,7 @@ import TableCell from './TableCell.vue'
 import CheckBox from '@/components/Control/CheckBox/CheckBox.vue'
 import useLangStore from '@/stores/LangStore'
 
-interface TableHeadProps<M> {
+export interface TableHeadProps<M> {
   dataSource: M[]
   columns: TableColumns<M>
   rowSelectedKeys: TableRowKey[]

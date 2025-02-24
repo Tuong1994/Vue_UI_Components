@@ -15,7 +15,7 @@ export interface RadioProps {
   labelStyle?: StyleValue
   controlStyle?: StyleValue
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'red' | 'gray'>
+  color?: Exclude<ComponentColor, 'gray'>
   name?: string
   value?: string | number
   disabled?: boolean

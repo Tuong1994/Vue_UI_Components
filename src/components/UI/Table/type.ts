@@ -2,6 +2,7 @@ import type { ComponentColor } from "@/common/type"
 
 type TableComponent = {
   node: any
+  slotContent?: any
   props?: any
 }
 
