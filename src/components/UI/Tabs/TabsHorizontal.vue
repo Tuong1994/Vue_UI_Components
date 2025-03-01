@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, defineEmits, type StyleValue } from 'vue'
 import type { ComponentColor } from '@/common/type.ts'
-import type { TabsItem, TabsItems } from './type.ts'
+import type { TabsColor, TabsItem, TabsItems } from './type.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import useLayoutStore from '../Layout/LayoutStore'
 
@@ -13,7 +13,7 @@ export interface TabsHorizontalProps {
   headStyle?: StyleValue
   contentStyle?: StyleValue
   items: TabsItems
-  color?: Exclude<ComponentColor, 'black' | 'white' | 'gray'>
+  color?: TabsColor
 }
 
 const props = withDefaults(defineProps<TabsHorizontalProps>(), {
