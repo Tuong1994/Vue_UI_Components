@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { withDefaults, defineEmits, type StyleValue } from 'vue'
-import type { ComponentColor } from '@/common/type.ts'
 import type { TabsColor, TabsItem, TabsItems, TabsType } from './type.ts'
 import TabsHorizontal from './TabsHorizontal.vue'
 import TabsVertical from './TabsVertical.vue'
