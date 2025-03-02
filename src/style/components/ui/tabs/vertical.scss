@@ -4,6 +4,8 @@
     min-width: max-content;
     background: $bg-slate;
     padding-left: $p-1 - 0.5;
+    border-top-left-radius: $rounded;
+    border-bottom-left-radius: $rounded;
     .title-item {
       padding: $p-1 $p-2;
       margin: $m-1 0;
@@ -29,13 +31,9 @@
     background: $bg-gray;
   }
   .tabs-vertical-content {
-    .content-item {
-      background: $bg-white;
-      opacity: 0;
-      transition: opacity $transition-time-sm $transition-fn;
-    }
-    .content-item-active {
-      opacity: 1;
+    background: $bg-white;
+    transition: background-color $transition-time-sm $transition-fn;
+    & > * {
       animation: fade $transition-time-md $transition-fn;
     }
   }
@@ -187,8 +185,6 @@
     }
   }
   .tabs-vertical-content {
-    .content-item {
-      background: $bg-dark;
-    }
+    background: $bg-dark;
   }
 }
