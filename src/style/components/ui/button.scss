@@ -235,6 +235,7 @@
 // Loading
 .button-loading {
   user-select: none;
+  pointer-events: none;
   cursor: not-allowed;
   opacity: 0.6;
 }
