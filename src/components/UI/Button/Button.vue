@@ -2,16 +2,15 @@
 import { computed, withDefaults, inject } from 'vue'
 import type { ControlShape } from '@/components/Control/type.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type'
+import type { ButtonColor, ButtonType } from './type'
 import Spinner from '@/components/UI/Loading/Spinner.vue'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type ButtonType = 'submit' | 'button' | 'reset'
 
 export interface ButtonProps {
   rootClassName?: string
   shape?: ControlShape
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'white' | 'gray'>
+  color?: ButtonColor
   ghost?: boolean
   loading?: boolean
   disabled?: boolean
