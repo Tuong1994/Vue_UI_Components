@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, type StyleValue, watch } from 'vue'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import { iconName } from '@/components/UI/Icon/constant'
 import { useViewPoint } from '@/hooks'
-import type { ComponentColor, ComponentShape } from '@/common/type.ts'
+import type { PaginationActionType, PaginationColor, PaginationShape } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
-import usePagination from './usePagination.ts'
+import usePagination from './usePagination'
 import useLayoutStore from '../Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
 
@@ -16,11 +16,9 @@ export interface PaginationProps {
   ghost?: boolean
   simple?: boolean
   hasContent?: boolean
-  color?: Exclude<ComponentColor, 'white' | 'gray'>
-  shape?: Exclude<ComponentShape, 'circle'>
+  color?: PaginationColor
+  shape?: PaginationShape
 }
-
-type ActionType = 'first' | 'prev' | 'page' | 'next' | 'last'
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   rootClassName: '',
@@ -81,7 +79,7 @@ const content = computed<string>(() => {
   return `${showing} ${from} - ${to} ${of} ${props.total} ${result}`
 })
 
-const handleChangePage = (type: ActionType, page?: number) => {
+const handleChangePage = (type: PaginationActionType, page?: number) => {
   switch (type) {
     case 'first': {
       currentPage.value = 1
