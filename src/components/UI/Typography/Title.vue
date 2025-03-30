@@ -47,7 +47,6 @@ const inlineStyle = computed<StyleValue>(() => ({
 }))
 
 const commonProps = computed<any>(() => ({
-  ...propsRef,
   class: [
     'title',
     `title-level-${props.level}`,
@@ -59,7 +58,7 @@ const commonProps = computed<any>(() => ({
     themeClassName.value,
     props.rootClassName
   ],
-  style: inlineStyle
+  style: inlineStyle.value
 }))
 </script>
 
