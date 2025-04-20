@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, useSlots, toRefs, watchEffect, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
-import type { ComponentColor, ComponentSize } from '@/common/type'
 import { useRender, useOverflow } from '@/hooks'
+import type { ComponentColor, ComponentSize } from '@/common/type'
 import Button, { type ButtonProps } from '@/components/UI/Button/Button.vue'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import useLayoutStore from '../Layout/LayoutStore'

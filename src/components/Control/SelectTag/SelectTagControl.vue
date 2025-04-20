@@ -3,7 +3,7 @@ import { ref, computed, withDefaults, useSlots, watchEffect, toRef, type StyleVa
 import type { SelectOptions } from '@/components/Control/type.ts'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
-import Spinner from '@/components/UI/Loading/Spinner.vue'
+import Spinner from '@/components/UI/Loading/Spinner/Spinner.vue'
 import Tags from './Tags.vue'
 
 interface SelectTagControlProps {

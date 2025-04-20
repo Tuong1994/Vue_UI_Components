@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect, toRef } from 'vue'
+import type { RangeDateValue } from './type';
 import type { SelectDate } from '../type';
 import CalendarHeader from './CalendarHeader.vue'
 import CalendarDay from './CalendarDay.vue'
 import CalendarDate from './CalendarDate.vue'
 
 interface DatePickerCalendarProps {
-  min?: 'today' | string
-  max?: 'today' | string
+  min?: RangeDateValue
+  max?: RangeDateValue
   dropdown: boolean
   selectedDate: Date
 }

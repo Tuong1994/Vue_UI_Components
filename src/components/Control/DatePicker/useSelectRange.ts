@@ -1,10 +1,11 @@
 import { computed, type Ref } from 'vue'
 import type { SelectDate } from '../type'
+import type { RangeDateValue } from './type'
 
 type Params = {
   date: Ref<SelectDate>
-  min: Ref<'today' | string>
-  max: Ref<'today' | string>
+  min: Ref<RangeDateValue>
+  max: Ref<RangeDateValue>
 }
 
 const DISABLED_CLASSNAME = 'date-item-disabled'

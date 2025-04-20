@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect } from 'vue'
-import type { SelectOptions, Option } from '../type.ts'
 import { useRender, useClickOutside } from '@/hooks'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import { iconName } from '@/components/UI/Icon/constant'
+import type { SelectOptions, Option } from '../type.ts'
+import type { DateSelectType } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 
 interface HeaderSelectProps {
-  type: 'month' | 'year'
+  type: DateSelectType
   options: SelectOptions
   currentOption: number | string
 }

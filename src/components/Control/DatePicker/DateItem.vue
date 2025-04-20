@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed, withDefaults, toRefs } from 'vue'
 import type { SelectDate } from '../type';
-import useSelectRange from './useSelectRange.ts'
+import type { RangeDateValue } from './type';
+import useSelectRange from './useSelectRange'
 
 interface DateItemProps {
-  min?: 'today' | string
-  max?: 'today' | string
+  min?: RangeDateValue
+  max?: RangeDateValue
   currentDate: Date
   selectDate: SelectDate
 }

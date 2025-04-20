@@ -2,8 +2,9 @@
 import { ref, computed, withDefaults, toRefs, useSlots, watchEffect, inject, type StyleValue } from 'vue'
 import { useField } from 'vee-validate'
 import { useRender, useClickOutside, useDetectBottom } from '@/hooks'
-import type { ComponentSize } from '@/common/type.ts'
-import type { ControlColor, ControlShape, FormRule, SelectDate } from '@/components/Control/type.ts'
+import type { ComponentSize } from '@/common/type'
+import type { ControlColor, ControlShape, FormRule, SelectDate } from '@/components/Control/type'
+import type { RangeDateValue } from './type'
 import DatePickerControl from './DatePickerControl.vue'
 import DatePickerCalender from './DatePickerCalendar.vue'
 import NoteMessage from '@/components/UI/NoteMessage/NoteMessage.vue'
@@ -21,8 +22,8 @@ export interface DatePickerProps {
   defaultDate?: Date
   format?: string
   name?: string
-  max?: 'today' | string
-  min?: 'today' | string
+  max?: RangeDateValue
+  min?: RangeDateValue
   sizes?: ComponentSize
   color?: ControlColor
   shape?: ControlShape

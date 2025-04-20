@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, withDefaults } from 'vue'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import { iconName } from '@/components/UI/Icon/constant'
 import Icon from '@/components/UI/Icon/Icon.vue'
 
 interface OptionPaginationProps {

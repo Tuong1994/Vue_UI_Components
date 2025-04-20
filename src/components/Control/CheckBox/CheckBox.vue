@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, useSlots, watchEffect, toRefs, inject, type StyleValue } from 'vue'
+import { iconName } from '@/components/UI/Icon/constant.ts'
 import { useField } from 'vee-validate'
 import type { FormRule } from '@/components/Control/type.ts'
 import type { ComponentSize, ComponentColor } from '@/common/type.ts'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import type { CheckBoxColor } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import NoteMessage from '@/components/UI/NoteMessage/NoteMessage.vue'
 import useLangStore from '@/stores/LangStore'
@@ -16,7 +17,7 @@ export interface CheckBoxProps {
   labelStyle?: StyleValue
   controlStyle?: StyleValue
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'gray'>
+  color?: CheckBoxColor
   value?: string | number | boolean
   name?: string
   checked?: boolean

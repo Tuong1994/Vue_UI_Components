@@ -2,7 +2,7 @@
 import { ref, computed, withDefaults, useSlots, watchEffect, toRef, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
-import Spinner from '@/components/UI/Loading/Spinner.vue'
+import Spinner from '@/components/UI/Loading/Spinner/Spinner.vue'
 
 interface SelectControlProps {
   inputClassName?: string

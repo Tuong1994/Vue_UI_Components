@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, toRefs, type StyleValue } from 'vue'
-import type { ComponentSize } from '@/common/type.ts'
+import type { ImageLazyType, ImageObjectFit, ImageSize } from './type'
 import ImageLoading from './ImageLoading.vue'
 import ImageView from './ImageView.vue'
-
-type ImageSize = ComponentSize
-
-type ImageObjectFit = 'fill' | 'cover' | 'contain' | 'none'
-
-export type ImageLazyType = 'immediate' | 'lazy'
 
 export interface ImageProps {
   rootClassName?: string

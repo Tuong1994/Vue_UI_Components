@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, useSlots, watch, toRef, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
+import type { AccordionType } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type AccordionType = 'default' | 'group'
 
 export interface AccordionProps {
   rootClassName?: string

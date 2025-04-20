@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults, type StyleValue, useSlots } from 'vue'
+import type { ContentPlacement, DividerType } from './type'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type DividerType = 'horizontal' | 'vertical'
-
-type ContentPlacement = 'left' | 'center' | 'right'
 
 export interface DividerProps {
   rootClassName?: string

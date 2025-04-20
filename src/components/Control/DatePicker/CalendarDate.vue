@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { toRefs } from 'vue'
 import type { SelectDate } from '../type';
+import type { RangeDateValue } from './type';
 import DateItem from "./DateItem.vue"
-import useDateRange from './useDateRange.ts'
+import useDateRange from './useDateRange'
 
 interface CalendarDateProps {
-  min?: 'today' | string
-  max?: 'today' | string
+  min?: RangeDateValue
+  max?: RangeDateValue
   currentDate: Date
   currentMonth: number
   currentYear: number

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { computed, withDefaults, toRefs, type StyleValue } from 'vue'
-import type { ComponentJustify, ComponentAligns, ComponentSize } from '@/common/type.ts'
-
-type SpaceSize = ComponentSize | number
+import type { SpaceAligns, SpaceJustify, SpaceSize } from './type'
 
 export interface SpaceProps {
   rootClassName?: string
   rootStyle?: StyleValue
-  justify?: Exclude<ComponentJustify, 'between' | 'around' | 'evenly'>
-  aligns?: Exclude<ComponentAligns, 'baseline'>
+  justify?: SpaceJustify
+  aligns?: SpaceAligns
   size?: SpaceSize
 }
 

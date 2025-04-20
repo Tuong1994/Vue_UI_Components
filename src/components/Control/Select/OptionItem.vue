@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults } from 'vue'
-import type { Option } from '@/components/Control/type.ts'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import { iconName } from '@/components/UI/Icon/constant'
+import type { Option } from '@/components/Control/type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 
 interface OptionItemProps {

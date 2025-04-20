@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue'
-import Spinner from '@/components/UI/Loading/Spinner.vue'
+import Spinner from '@/components/UI/Loading/Spinner/Spinner.vue'
 
 interface ImageLoadingProps {
   imageSize: StyleValue

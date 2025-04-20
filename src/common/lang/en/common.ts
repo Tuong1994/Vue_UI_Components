@@ -72,6 +72,7 @@ const common_en = {
     cancel: 'Cancel'
   },
   table: {
+    empty: 'No data',
     head: {
       customerName: 'Full name',
       phone: 'Phone',

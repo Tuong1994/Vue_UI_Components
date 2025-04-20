@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults, useSlots, toRefs, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
-import type { ComponentColor, ComponentShape } from '@/common/type.ts'
+import type { AvatarColor, AvatarShape } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 
 export interface AvatarProps {
@@ -11,8 +11,8 @@ export interface AvatarProps {
   dot?: boolean
   badge?: string
   letter?: string
-  shape?: Exclude<ComponentShape, 'round'>
-  color?: Exclude<ComponentColor, 'white' | 'gray'>
+  shape?: AvatarShape
+  color?: AvatarColor
 }
 
 const props = withDefaults(defineProps<AvatarProps>(), {

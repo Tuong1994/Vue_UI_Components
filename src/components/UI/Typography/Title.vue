@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed, withDefaults, toRefs, type StyleValue } from 'vue'
-import type { TypoAligns, TypoVariant } from './type.ts'
+import type { TitleLevel, TypoAligns, TypoVariant } from './type.ts'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6
 
 export interface TitleProps {
   rootClassName?: string

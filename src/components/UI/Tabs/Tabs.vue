@@ -14,6 +14,7 @@ export interface TabsProps {
   type?: TabsType
   items: TabsItems
   color?: TabsColor
+}
 
 const props = withDefaults(defineProps<TabsProps>(), {
   rootClassName: '',

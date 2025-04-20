@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, withDefaults } from 'vue'
-import type { SelectOptions, Option } from '@/components/Control/type.ts'
+import type { SelectOptions, Option } from '@/components/Control/type'
 import OptionItem from './OptionItem.vue'
 import OptionEmpty from './OptionEmpty.vue'
 import OptionLoading from './OptionLoading.vue'

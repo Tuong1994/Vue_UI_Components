@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, useSlots, toRef, watchEffect, inject, type StyleValue } from 'vue'
 import { useField } from 'vee-validate'
-import type { ComponentSize } from '@/common/type.ts'
-import type { FormRule, ControlColor, ControlShape } from '@/components/Control/type.ts'
-import { iconName } from '@/components/UI/Icon/constant.ts'
+import { iconName } from '@/components/UI/Icon/constant'
+import type { ComponentSize } from '@/common/type'
+import type { FormRule, ControlColor, ControlShape } from '@/components/Control/type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import NoteMessage from '@/components/UI/NoteMessage/NoteMessage.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
-import type { FormStore } from '../Form/FormStore'
 
 export interface InputProps {
   rootClassName?: string

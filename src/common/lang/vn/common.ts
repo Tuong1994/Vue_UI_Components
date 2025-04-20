@@ -72,6 +72,7 @@ const common_vn = {
     cancel: 'Hủy'
   },
   table: {
+    empty: 'Không có dữ liệu',
     head: {
       customerName: 'Họ và Tên',
       phone: 'Điện thoại',

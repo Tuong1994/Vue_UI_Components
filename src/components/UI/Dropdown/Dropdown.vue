@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, withDefaults, defineEmits, useSlots, watch, type StyleValue } from 'vue'
-import type { ComponentPlacement } from '@/common/type.ts'
-import type { DropdownItems } from './type.ts'
 import { useRender, useClickOutside } from '@/hooks'
+import type { DropdownContentPlacement, DropdownItems, DropdownTriggerType } from './type'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type TriggerType = 'hover' | 'click'
 
 export interface DropdownProps {
   rootClassName?: string
@@ -13,9 +10,9 @@ export interface DropdownProps {
   boxClassName?: string
   rootStyle?: StyleValue
   labelStyle?: StyleValue
-  placement?: Exclude<ComponentPlacement, 'top' | 'bottom'>
+  placement?: DropdownContentPlacement
   items?: DropdownItems
-  trigger?: TriggerType
+  trigger?: DropdownTriggerType
 }
 
 const props = withDefaults(defineProps<DropdownProps>(), {

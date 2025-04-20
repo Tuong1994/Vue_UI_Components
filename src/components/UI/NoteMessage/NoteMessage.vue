@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, withDefaults, toRefs, type StyleValue } from 'vue'
 import type { ComponentSize } from '@/common/type.ts'
+import type { MessageType } from './type'
 import useLayoutStore from '../Layout/LayoutStore'
-
-type MessageType = 'default' | 'error'
 
 export interface NoteMessageProps {
   rootClassName?: string

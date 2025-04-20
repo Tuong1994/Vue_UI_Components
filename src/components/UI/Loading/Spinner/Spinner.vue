@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, withDefaults, type StyleValue } from 'vue'
-import type { ComponentColor } from '@/common/type'
 import { iconName } from '@/components/UI/Icon/constant.ts'
+import type { ComponentColor } from '@/common/type'
+import type { SpinnerType } from './type'
 import Icon from '@/components/UI/Icon/Icon.vue'
-
-type SpinnerType = 'default' | 'bubble'
 
 export interface SpinnerProps {
   rootClassName?: string

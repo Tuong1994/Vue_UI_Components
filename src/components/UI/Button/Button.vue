@@ -3,7 +3,7 @@ import { computed, withDefaults, inject } from 'vue'
 import type { ControlShape } from '@/components/Control/type.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type'
 import type { ButtonColor, ButtonType } from './type'
-import Spinner from '@/components/UI/Loading/Spinner.vue'
+import Spinner from '@/components/UI/Loading/Spinner/Spinner.vue'
 import useLayoutStore from '../Layout/LayoutStore'
 
 export interface ButtonProps {

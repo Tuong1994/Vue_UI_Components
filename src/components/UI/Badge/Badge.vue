@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, withDefaults, type StyleValue } from 'vue'
-import type { ComponentColor, ComponentShape } from '@/common/type.ts'
+import type { BadgeColor, BadgeShape } from './type'
 import useLayoutStore from '../Layout/LayoutStore'
 
 export interface BadgeProps {
   rootClassName?: string
   rootStyle?: StyleValue
-  color?: Exclude<ComponentColor, 'white' | 'gray'>
-  shape?: Exclude<ComponentShape, 'circle'>
+  color?: BadgeColor
+  shape?: BadgeShape
   ghost?: boolean
 }
 

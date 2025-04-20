@@ -3,6 +3,7 @@ import { ref, computed, withDefaults, watchEffect, useSlots, toRefs, inject, typ
 import { useField } from 'vee-validate'
 import type { FormRule } from '@/components/Control/type.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type.ts'
+import type { RadioColor } from './type'
 import NoteMessage from '@/components/UI/NoteMessage/NoteMessage.vue'
 import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import useLangStore from '@/stores/LangStore'
@@ -15,7 +16,7 @@ export interface RadioProps {
   labelStyle?: StyleValue
   controlStyle?: StyleValue
   sizes?: ComponentSize
-  color?: Exclude<ComponentColor, 'gray'>
+  color?: RadioColor
   name?: string
   value?: string | number
   disabled?: boolean
