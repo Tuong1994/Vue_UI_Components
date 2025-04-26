@@ -48,7 +48,7 @@ const rootInlineStyle = computed<StyleValue>(() => ({
   height: `${props.size}px`
 }))
 
-const letterStyle = computed<StyleValue>(() => ({ fontSize: `${contentSize}px` }))
+const letterStyle = computed<StyleValue>(() => ({ fontSize: `${contentSize.value}px` }))
 </script>
 
 <template>
