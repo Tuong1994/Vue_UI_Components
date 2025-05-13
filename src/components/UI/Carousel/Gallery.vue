@@ -274,7 +274,8 @@ watchEffect((onStop) => {
       <div class="gallery-list">
         <Image
           v-for="(item, idx) in items"
-          sizes="100%"
+          imgWidth="100%"
+          imgHeight="100%"
           :key="item.id"
           :src="item.url"
           :rootClassName="`list-item ${slidePos === idx ? 'list-item-active' : ''}`"
