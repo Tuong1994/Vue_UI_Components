@@ -2,6 +2,7 @@
 import { ref, computed, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import type { ImageLazyType, ImageViewerActive } from './type'
+import type { ControlColor } from '@/components/Control/type'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import CheckBox from '@/components/Control/CheckBox/CheckBox.vue'
 import ImageViewer from './ImageViewer.vue'
@@ -16,6 +17,7 @@ interface ImageViewProps {
   hasRemove: boolean
   hasCheck: boolean
   isChecked: boolean
+  checkboxColor?: ControlColor
 }
 
 const props = defineProps<ImageViewProps>()
@@ -56,7 +58,7 @@ const handleCheck = (checked: boolean) => emits('onCheck', checked)
       <Icon v-if="hasRemove" :iconName="iconName.TRASH" class="actions-icon" @click="handleRemove" />
     </div>
 
-    <CheckBox v-if="hasCheck" :rootClassName="`view-check ${checkedClassName}`" @onCheck="handleCheck" />
+    <CheckBox v-if="hasCheck" :color="checkboxColor" :rootClassName="`view-check ${checkedClassName}`" @onCheck="handleCheck" />
   </div>
 
   <ImageViewer :open="openViewer.active" :imgUrl="openViewer.imgUrl" @onClose="handleCloseViewer" />
