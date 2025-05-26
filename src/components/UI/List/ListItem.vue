@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { withDefaults, computed, type StyleValue } from 'vue'
 import Icon from '@/components/UI/Icon/Icon.vue'
-import useListStore from './ListStore.ts'
 
 export interface ListItemProps {
   rootClassName?: string
@@ -16,7 +15,7 @@ const props = withDefaults(defineProps<ListItemProps>(), {
   contentClassName: ''
 })
 
-const list = useListStore()
+const list = inject('list', null) as any
 
 const iconName = computed<string>(() => (props.icon ? props.icon : list.icon))
 </script>
