@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, withDefaults, toRefs, watchEffect, type StyleValue } from 'vue'
-import type { AlertIcon, AlertPlacement, AlertType } from './type.ts'
+import { computed, withDefaults, watchEffect, type StyleValue } from 'vue'
+import type { AlertIcon, AlertPlacement } from './type.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import useRender from '@/hooks/useRender.ts'
 import useAlertStore from './AlertStore'

@@ -9,6 +9,7 @@
   position: fixed;
   opacity: 0;
   left: 50%;
+  z-index: 100;
   transform: translateY(-50%);
   transition: all $transition-time-md $transition-fn;
   .alert-icon {
