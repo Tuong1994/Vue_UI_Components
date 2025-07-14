@@ -14,10 +14,12 @@
     box-shadow: 0 0 5px $bg-black-rgba-xs;
     overflow: hidden;
     position: absolute;
-    top: calc(100% - 5px);
+    transform: scaleY(0);
+    transform-origin: top;
+    top: 100%;
     opacity: 0;
     z-index: 5;
-    transition: all $transition-time-xs $transition-fn;
+    transition: opacity $transition-time-xs $transition-fn, transform $transition-time-xs $transition-fn;
     .list-item {
       padding: $p-1 - 0.5 $p-1;
       cursor: pointer;
@@ -29,8 +31,8 @@
   }
   .dropdown-list-active {
     opacity: 1;
-    top: 100%;
-    animation: slideDown $transition-time-xs $transition-fn;
+    transform: scaleY(1);
+    animation: dropdown $transition-time-xs $transition-fn;
   }
 }
 
@@ -58,16 +60,5 @@
   .dropdown-list {
     background: $bg-dark;
     box-shadow: 0 0 10px $bg-black;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    top: calc(100% - 5px);
-    opacity: 0;
-  }
-  to {
-    top: 100%;
-    opacity: 1;
   }
 }

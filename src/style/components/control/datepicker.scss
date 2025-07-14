@@ -96,11 +96,13 @@
       background: $bg-white;
       box-shadow: 0 0 10px $bg-gray;
       position: absolute;
+      transform: scaleY(0);
+      transform-origin: top;
       top: 110%;
       left: 0;
       z-index: 10;
       opacity: 0;
-      transition: opacity $transition-time-xs $transition-fn;
+      transition: opacity $transition-time-xs $transition-fn, transform $transition-time-xs $transition-fn;
       .calendar-header {
         padding: $p-1;
         display: flex;
@@ -233,7 +235,7 @@
       }
     }
     .wrap-calendar-active {
-      top: 120%;
+      transform: scaleY(1);
       opacity: 1;
       animation: dropdown $transition-time-xs $transition-fn;
     }

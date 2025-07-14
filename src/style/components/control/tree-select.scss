@@ -99,11 +99,13 @@
       background: $bg-white;
       overflow: hidden;
       position: absolute;
+      transform: scaleY(0);
+      transform-origin: top;
       top: 110%;
       left: 0;
       z-index: 10;
       opacity: 0;
-      transition: all $transition-time-sm $transition-fn;
+      transition: opacity $transition-time-xs $transition-fn, transform $transition-time-xs $transition-fn;
       .option-list {
         width: $w-full;
         .list-item {
@@ -240,9 +242,9 @@
       bottom: 120%;
     }
     .wrap-option-active {
-      top: 120%;
+      transform: scaleY(1);
       opacity: 1;
-      animation: dropdown $transition-time-sm $transition-fn;
+      animation: dropdown $transition-time-xs $transition-fn;
     }
   }
 }
