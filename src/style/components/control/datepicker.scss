@@ -247,12 +247,13 @@
   .datepicker-wrap {
     .wrap-calendar {
       top: unset !important;
+      transform-origin: bottom;
       bottom: 100%;
     }
     .wrap-calendar-active {
       bottom: 120%;
       opacity: 1;
-      animation: dropup $transition-time-xs $transition-fn;
+      animation: dropdown $transition-time-xs $transition-fn;
     }
   }
 }
