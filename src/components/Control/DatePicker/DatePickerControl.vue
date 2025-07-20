@@ -7,6 +7,7 @@ import moment from 'moment'
 interface DatePickerControlProps {
   inputClassName?: string
   inputStyle?: StyleValue
+  disabled?: boolean
   hasAddonBefore: boolean
   hasAddonAfter: boolean
   dropdown: boolean
@@ -26,9 +27,11 @@ const slots = useSlots()
 
 const dropdownClassName = computed<string>(() => (props.dropdown ? 'wrap-group-dropdown' : ''))
 
-const handleDropdown = () => emits('onDropdown')
-
 const handleResetInput = () => emits('onResetInput')
+
+const handleDropdown = () => {
+  if (!props.disabled) emits('onDropdown')
+}
 </script>
 
 <template>

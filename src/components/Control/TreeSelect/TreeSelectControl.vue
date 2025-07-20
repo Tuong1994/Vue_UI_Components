@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, withDefaults, useSlots, watchEffect, toRef, type StyleValue } from 'vue'
+import { ref, computed, withDefaults, watchEffect, toRef, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant.ts'
 import Icon from '@/components/UI/Icon/Icon.vue'
 import Spinner from '@/components/UI/Loading/Spinner/Spinner.vue'
@@ -25,8 +25,6 @@ const props = withDefaults(defineProps<SelectControlProps>(), {
   inputClassName: ''
 })
 
-const slots = useSlots()
-
 const emits = defineEmits(['onClearInput', 'onDropdown', 'onSearch'])
 
 const errorMessage = toRef(props, 'errorMessage')
@@ -35,11 +33,13 @@ const controlRef = ref<HTMLDivElement | null>(null)
 
 const iconRotateClassName = computed<string>(() => (props.dropdown ? 'action-icon-rotate' : ''))
 
-const handleDropdown = () => emits('onDropdown')
-
 const handleSearch = (e: Event) => emits('onSearch', e)
 
 const handleClearInput = () => emits('onClearInput')
+
+const handleDropdown = () => {
+  if (!props.disabled) emits('onDropdown')
+}
 
 watchEffect(() => {
   if (!props.autoFocusValidation) return

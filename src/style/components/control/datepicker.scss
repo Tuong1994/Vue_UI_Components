@@ -267,6 +267,7 @@
     }
   }
   .wrap-group {
+    cursor: not-allowed;
     background: $bg-slate !important;
     &:hover {
       border-color: $bg-gray !important;
@@ -274,6 +275,10 @@
     .control-box {
       color: $text-gray;
       cursor: not-allowed;
+    }
+    .control-action {
+      pointer-events: none;
+      user-select: none;
     }
   }
 }

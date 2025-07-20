@@ -174,6 +174,7 @@ watchEffect(() => {
         :hasAddonBefore="hasAddonBefore"
         :hasAddonAfter="hasAddonAfter"
         :dropdown="dropdown"
+        :disabled="disabled"
         :format="format"
         :iconSize="iconSize"
         @onDropdown="handleDropdown"
