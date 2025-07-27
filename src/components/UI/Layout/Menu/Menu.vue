@@ -10,7 +10,7 @@ type MenuType = 'horizontal' | 'vertical'
 export interface LayoutMenuProps {
   rootClassName?: string
   itemClassName?: string
-  style?: StyleValue
+  rootStyle?: StyleValue
   itemStyle?: StyleValue
   items?: MenuItems
   type?: MenuType

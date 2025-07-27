@@ -23,7 +23,7 @@ const themeClassName = computed<string>(() => `content-${layout.theme}`)
 </script>
 
 <template>
-  <div :class="['content', layoutClassName, shrinkClassName, resizeClassName, themeClassName, rootClassName]">
+  <div :style="rootStyle" :class="['content', layoutClassName, shrinkClassName, resizeClassName, themeClassName, rootClassName]">
     <slot></slot>
   </div>
 </template>
