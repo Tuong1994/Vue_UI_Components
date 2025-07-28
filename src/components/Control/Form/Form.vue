@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="M extends object">
-import { withDefaults, watchEffect, toRef, provide, reactive } from 'vue'
+import { withDefaults, watchEffect, toRef, provide, reactive, ref } from 'vue'
 import { useForm } from 'vee-validate'
 import type { ComponentSize } from '@/common/type'
 import type { ControlColor, ControlShape } from '@/components/Control/type'
-import type { FormStore } from './type'
+import type { FormStore, FormResult } from './type'
 
 export interface FormProps<M> {
   initialValues: M
@@ -21,7 +21,11 @@ const props = withDefaults(defineProps<FormProps<M>>(), {
   autoFocusValidation: true
 })
 
-const emits = defineEmits(['onFinish'])
+const emits = defineEmits<{
+  (e: 'onFinish', payload: FormResult<M>): void
+}>()
+
+const submitDisabled = ref<boolean>(false)
 
 const formStore = reactive<FormStore>({
   isVee: false,
@@ -31,6 +35,7 @@ const formStore = reactive<FormStore>({
   formSize: props.sizes ?? 'md',
   formShape: props.shape ?? 'square',
   formDisabled: props.disabled ?? false,
+  formSubmitDisabled: false,
   formActive() {
     formStore.isVee = true
   },
@@ -51,14 +56,26 @@ const formStore = reactive<FormStore>({
   },
   disabledAutoFocus(autoFocused: boolean) {
     formStore.autoFocusValidation = autoFocused
+  },
+  disabledSubmit(submitDisabled: boolean) {
+    formStore.formSubmitDisabled = submitDisabled
   }
 })
 
 const initialValues = toRef(props, 'initialValues')
 
-const { handleSubmit } = useForm<M>({ initialValues: initialValues.value })
+const { handleSubmit, errors } = useForm<M>({ initialValues: initialValues.value })
 
-const onSubmit = handleSubmit((data) => emits('onFinish', data))
+const onSubmit = handleSubmit(
+  (data) => {
+    submitDisabled.value = false
+    emits('onFinish', { success: true, data })
+  },
+  (errors) => {
+    submitDisabled.value = true
+    emits('onFinish', { success: false, errors })
+  }
+)
 
 provide('form', formStore)
 
@@ -70,6 +87,13 @@ watchEffect(() => {
   formStore.changeShape(props.shape)
   formStore.disabledForm(props.disabled)
   formStore.disabledAutoFocus(props.autoFocusValidation)
+  formStore.disabledSubmit(submitDisabled.value)
+})
+
+watchEffect(() => {
+  if (Object.keys(errors.value).length === 0) {
+    submitDisabled.value = false
+  }
 })
 </script>
 

@@ -35,7 +35,9 @@ const buttonSize = computed<ComponentSize>(() => (props.sizes ? props.sizes : fo
 
 const buttonColor = computed<ComponentColor>(() => (props.color ? props.color : form?.formColor))
 
-const buttonDisabled = computed<boolean>(() => (form?.formDisabled ? form?.formDisabled : props.disabled))
+const buttonDisabled = computed<boolean>(
+  () => form?.formDisabled || form?.formSubmitDisabled || props.disabled
+)
 
 const isLoading = computed<boolean>(() => props.loading && !props.text)
 

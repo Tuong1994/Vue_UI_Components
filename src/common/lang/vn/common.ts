@@ -46,10 +46,13 @@ const common_vn = {
       email: 'Email không hợp lệ',
       confirmPassword: 'Mật khẩu không trùng khớp',
       whiteSpace: 'Không được có khoảng trắng',
+      match: 'Giá trị này không khớp',
       min: '{{min}} là tối thiểu',
       max: '{{max}} là tối đa',
       minLength: 'Phải có ít nhất {{min}} ký tự',
-      maxLength: 'Độ dài tối đa là {{max}} ký tự'
+      maxLength: 'Độ dài tối đa là {{max}} ký tự',
+      string: 'Giá trị phải là chuỗi',
+      number: 'Giá trị phải là số'
     },
     others: {
       emptyOptions: 'Không có lựa chọn',

@@ -46,10 +46,13 @@ const common_en = {
       email: 'Email invalid',
       confirmPassword: 'The passwords do not match',
       whiteSpace: 'White space are not allowed',
+      match: 'This value does not match',
       min: '{{min}} is minimum',
       max: '{{max}} is maximum',
       minLength: 'Must have at least {{min}} character',
-      maxLength: 'Maximum length {{max}} characters'
+      maxLength: 'Maximum length {{max}} characters',
+      string: 'Value must be a string',
+      number: 'Value must be a number'
     },
     others: {
       emptyOptions: 'No options',
