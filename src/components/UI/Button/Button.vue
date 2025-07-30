@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, withDefaults, inject } from 'vue'
+import { computed, withDefaults, inject, type StyleValue } from 'vue'
 import type { ControlShape } from '@/components/Control/type.ts'
 import type { ComponentColor, ComponentSize } from '@/common/type'
 import type { ButtonColor, ButtonType } from './type'
@@ -8,6 +8,7 @@ import useLayoutStore from '../Layout/LayoutStore'
 
 export interface ButtonProps {
   rootClassName?: string
+  rootStyle?: StyleValue
   shape?: ControlShape
   sizes?: ComponentSize
   color?: ButtonColor
@@ -67,6 +68,7 @@ const colorClassName = computed<string>(() => {
   <button
     :type="type"
     :disabled="buttonDisabled"
+    :style="rootStyle"
     :class="[
       'button',
       shapeClassName,
