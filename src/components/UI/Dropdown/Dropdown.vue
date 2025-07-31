@@ -7,9 +7,10 @@ import useLayoutStore from '../Layout/LayoutStore'
 export interface DropdownProps {
   rootClassName?: string
   labelClassName?: string
-  boxClassName?: string
+  dropdownClassName?: string
   rootStyle?: StyleValue
   labelStyle?: StyleValue
+  dropdownStyle?: StyleValue
   placement?: DropdownContentPlacement
   items?: DropdownItems
   trigger?: DropdownTriggerType
@@ -18,7 +19,7 @@ export interface DropdownProps {
 const props = withDefaults(defineProps<DropdownProps>(), {
   rootClassName: '',
   labelClassName: '',
-  boxClassName: '',
+  dropdownClassName: '',
   placement: 'left',
   trigger: 'click',
   items: () => []
@@ -66,7 +67,7 @@ watch(dropdown, (newValue) => emits('onDropdown', newValue))
     >
       <slot name="label"></slot>
     </div>
-    <div v-if="render" :class="['dropdown-list', activeClassName, boxClassName]">
+    <div v-if="render" :style="dropdownStyle" :class="['dropdown-list', activeClassName, dropdownClassName]">
       <slot v-if="hasDropdownSlot" name="dropdown" :items="items"></slot>
 
       <template v-else>
