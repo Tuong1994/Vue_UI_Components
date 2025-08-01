@@ -16,6 +16,10 @@ export interface PaginationProps {
   ghost?: boolean
   simple?: boolean
   hasContent?: boolean
+  firstIcon?: string;
+  lastIcon?: string;
+  prevIcon?: string;
+  nextIcon?: string;
   color?: PaginationColor
   shape?: PaginationShape
 }
@@ -26,7 +30,11 @@ const props = withDefaults(defineProps<PaginationProps>(), {
   limit: 10,
   color: 'blue',
   shape: 'round',
-  simple: false
+  simple: false,
+  firstIcon: iconName.ANGLE_DOUBLE_LEFT,
+  lastIcon: iconName.ANGLE_DOUBLE_RIGHT,
+  prevIcon: iconName.ANGLE_LEFT,
+  nextIcon: iconName.ANGLE_RIGHT,
 })
 
 const emits = defineEmits(['onChangePage'])
@@ -129,14 +137,14 @@ watch(currentPage, (newValue) => emits('onChangePage', newValue))
         :class="['range-btn', leftBtnsDisabledClassName]"
         @click="() => handleChangePage('first')"
       >
-        <Icon :size="13" :iconName="iconName.ANGLE_DOUBLE_LEFT" />
+        <Icon :size="13" :iconName="firstIcon" />
       </button>
       <button
         :disabled="leftBtnsDisabled"
         :class="['range-btn', leftBtnsDisabledClassName]"
         @click="() => handleChangePage('prev')"
       >
-        <Icon :size="13" :iconName="iconName.ANGLE_LEFT" />
+        <Icon :size="13" :iconName="prevIcon" />
       </button>
 
       <div v-if="!simple" class="range-group">
@@ -160,14 +168,14 @@ watch(currentPage, (newValue) => emits('onChangePage', newValue))
         :class="['range-btn', rightBtnsDisabledClassName]"
         @click="() => handleChangePage('next')"
       >
-        <Icon :size="13" :iconName="iconName.ANGLE_RIGHT" />
+        <Icon :size="13" :iconName="nextIcon" />
       </button>
       <button
         :disabled="rightBtnsDisabled"
         :class="['range-btn', rightBtnsDisabledClassName]"
         @click="() => handleChangePage('last')"
       >
-        <Icon :size="13" :iconName="iconName.ANGLE_DOUBLE_RIGHT" />
+        <Icon :size="13" :iconName="lastIcon" />
       </button>
     </div>
   </div>
