@@ -22,11 +22,16 @@
     transition: opacity $transition-time-xs $transition-fn, transform $transition-time-xs $transition-fn;
     .list-item {
       padding: $p-1 - 0.5 $p-1;
+      opacity: 0.6;
       cursor: pointer;
-      transition: all $transition-time-sm $transition-fn;
+      transition: opacity $transition-time-sm $transition-fn,
+        background-color $transition-time-sm $transition-fn;
       &:hover {
         background: $bg-blue-rgba-xs;
       }
+    }
+    .list-item-selected {
+      opacity: 1;
     }
   }
   .dropdown-list-active {
