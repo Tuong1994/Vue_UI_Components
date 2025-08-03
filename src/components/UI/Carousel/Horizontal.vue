@@ -21,6 +21,7 @@ export interface CarouselHorizontalProps {
   time?: number
   infinite?: boolean
   autoPlay?: boolean
+  hasArrow?: boolean
   hasManualStop?: boolean
   prevButtonIcon?: string
   nextButtonIcon?: string
@@ -36,6 +37,7 @@ const props = withDefaults(defineProps<CarouselHorizontalProps>(), {
   slideId: 'slide',
   mode: 'dark',
   time: 3000,
+  hasArrow: true,
   prevButtonIcon: iconName.ANGLE_LEFT,
   nextButtonIcon: iconName.ANGLE_RIGHT,
   items: () => []
@@ -194,6 +196,7 @@ watchEffect((onStop) => {
 <template>
   <div :style="rootStyle" :class="['carousel', 'carousel-horizontal', modeClassName, rootClassName]">
     <button
+      v-if="hasArrow"
       :style="prevBtnStyle"
       :disabled="prevBtnDisabled"
       :class="['carousel-action', prevBtnClassName, prevBtnDisabledClassName]"
@@ -202,6 +205,7 @@ watchEffect((onStop) => {
       <Icon :iconName="prevButtonIcon" :size="25" />
     </button>
     <button
+      v-if="hasArrow"
       :style="nextBtnStyle"
       :disabled="nextBtnDisabled"
       :class="['carousel-action', nextBtnClassName, nextBtnDisabledClassName]"
