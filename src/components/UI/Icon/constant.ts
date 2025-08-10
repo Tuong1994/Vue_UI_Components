@@ -1,6 +1,7 @@
 export const iconType = {
   FAS: 'fas',
-  FAR: 'far'
+  FAR: 'far',
+  FAB: 'fab'
 }
 
 export const iconName = {

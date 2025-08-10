@@ -49,7 +49,12 @@ const handleChangeTab = (tab: TabsItem) => {
         @click="() => handleChangeTab(tab)"
       >
         <div class="item-inner">
-          <Icon v-if="tab.labelIcon" rootClassName="inner-icon" :iconName="tab.labelIcon" />
+          <Icon
+            v-if="tab.labelIcon"
+            rootClassName="inner-icon"
+            :type="tab.labelIcon.type"
+            :iconName="tab.labelIcon.iconName"
+          />
           <span>{{ tab.label }}</span>
         </div>
       </div>
