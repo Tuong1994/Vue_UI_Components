@@ -6,6 +6,7 @@ import type { SwitchColor } from './type'
 export interface SwitchProps {
   rootClassName?: string
   rootStyle?: StyleValue
+  switched?: boolean
   color?: SwitchColor
   sizes?: ComponentSize
 }
@@ -32,6 +33,7 @@ const handleSwitch = (e: Event) => {
   <input
     type="checkbox"
     :style="rootStyle"
+    :checked="switched"
     :class="['switch', colorClassName, sizeClassName, rootClassName]"
     @input="handleSwitch"
   />
