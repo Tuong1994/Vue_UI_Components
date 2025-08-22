@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, withDefaults, useSlots, watchEffect, reactive, provide type StyleValue } from 'vue'
+import { computed, withDefaults, useSlots, watchEffect, reactive, provide, type StyleValue } from 'vue'
 import { iconName } from '@/components/UI/Icon/constant'
-import { ListStore } from './type'
+import type { ListStore } from './type'
 
 export interface ListProps {
   rootClassName?: string
@@ -33,7 +33,7 @@ const hasHead = computed<boolean>(() => slots.head !== undefined)
 
 provide('list', listStore)
 
-watchEffect(() => list.changeIcon(props.icon))
+watchEffect(() => listStore.changeIcon(props.icon))
 </script>
 
 <template>

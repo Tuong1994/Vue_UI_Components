@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withDefaults, computed, type StyleValue } from 'vue'
+import { withDefaults, computed, type StyleValue, inject } from 'vue'
 import Icon from '@/components/UI/Icon/Icon.vue'
 
 export interface ListItemProps {
