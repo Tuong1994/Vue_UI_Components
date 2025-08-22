@@ -7,11 +7,15 @@ import useLayoutStore from '@/components/UI/Layout/LayoutStore'
 import { iconName } from '@/components/UI/Icon/constant'
 import { ELayoutTheme } from '@/components/UI/Layout/enum'
 
-const { Section, Button, Image, Table, Divider, Tabs, Grid, Layout } = UI
+const { Section, Button, Image, Table, Divider, Tabs, Grid, Layout, BgAnimation } = UI
 
-const { } = Control
+const {} = Control
+
+const { BgFloating } = BgAnimation
 </script>
 
 <template>
-  <Section> </Section>
+  <Section :rootStyle="{width: '100%', height: '500px'}">
+    <BgFloating color="purple" shape="bubble" />
+  </Section>
 </template>

@@ -4,6 +4,7 @@ import * as Typography from './Typography'
 import * as Carousel from './Carousel'
 import * as UList from './List'
 import * as Layout from './Layout'
+import * as BgAnimation from './BgAnimation'
 import Grid from './Grid/Grid.vue'
 import Section from './Section/Section.vue'
 import Avatar from './Avatar/Avatar.vue'
@@ -65,5 +66,6 @@ export {
   Alert,
   InfoRow,
   TypingText,
-  DynamicGrid
+  DynamicGrid,
+  BgAnimation,
 }
