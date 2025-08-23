@@ -1,3 +1,4 @@
-import BgFloating from './BgFloating.vue'
+import BgFloating from './BgFloating/BgFloating.vue'
+import BgParticles from './BgParticles/BgParticles.vue'
 
-export { BgFloating }
+export { BgFloating, BgParticles }

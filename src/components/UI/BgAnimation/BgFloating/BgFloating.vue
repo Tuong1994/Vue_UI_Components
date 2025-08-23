@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults, type StyleValue } from 'vue'
-import type { LayoutColor } from '../Layout/type'
-import type { BgFloatingShape } from './type'
-import useLayoutStore from '../Layout/LayoutStore'
+import type { LayoutColor } from '../../Layout/type'
+import type { BgFloatingShape } from '../type'
+import useLayoutStore from '../../Layout/LayoutStore'
 
 interface BgFloadingProps {
   rootClassName?: string
