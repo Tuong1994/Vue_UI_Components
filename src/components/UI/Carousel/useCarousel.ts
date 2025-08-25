@@ -1,45 +1,43 @@
 import { computed, type Ref } from 'vue'
-import type { CarouselItems } from './type'
 
 type TranslateType = 'horizontal' | 'vertical'
 
 type Params = {
-  items: Ref<CarouselItems>
-  slideId: string
   slidePos: Ref<number>
+  slideRefs: Ref<HTMLDivElement[]>
 }
 
 const useCarousel = (args: Params) => {
-  const { items, slideId, slidePos } = args
+  const { slidePos, slideRefs } = args
 
   const span = computed<number>(() => 100)
 
+  const slideItems = computed<HTMLDivElement[]>(() => (slideRefs.value ? slideRefs.value : []))
+
   const translateFull = (pos: number, type: TranslateType) => {
     const translate = -pos * span.value
-    for (let i = 0; i < items.value.length; i++) {
-      const el = document.getElementById(`${slideId}-${i}`)
-      if (el) {
-        if (type === 'horizontal') el.style.transform = `translateX(${translate}%)`
-        else el.style.transform = `translateY(${translate}%)`
+    slideItems.value.forEach((slideItem) => {
+      if (slideItem) {
+        if (type === 'horizontal') slideItem.style.transform = `translateX(${translate}%)`
+        else slideItem.style.transform = `translateY(${translate}%)`
       }
-    }
+    })
   }
 
   const translatePartial = (pos: number, type: TranslateType) => {
     const currentPos = -slidePos.value * span.value
     const translate = currentPos + pos
-    for (let i = 0; i < items.value.length; i++) {
-      const el = document.getElementById(`${slideId}-${i}`)
-      if (el) {
-        if (type === 'horizontal') el.style.transform = `translateX(${translate}%)`
-        else el.style.transform = `translateY(${translate}%)`
+    slideItems.value.forEach((slideItem) => {
+      if (slideItem) {
+        if (type === 'horizontal') slideItem.style.transform = `translateX(${translate}%)`
+        else slideItem.style.transform = `translateY(${translate}%)`
       }
-    }
+    })
   }
 
   const translateAnimation = (type: 'fast' | 'slow') => {
-    for (let i = Math.max(0, slidePos.value - 2); i < Math.min(items.value.length, slidePos.value + 3); i++) {
-      const el = document.getElementById(`${slideId}-${i}`)
+    for (let i = Math.max(0, slidePos.value - 2); i < Math.min(slideItems.value.length, slidePos.value + 3); i++) {
+      const el = slideItems.value[i]
       if (el) {
         if (type === 'fast') el.style.transitionDuration = `0.1s`
         else el.style.transitionDuration = `0.4s`

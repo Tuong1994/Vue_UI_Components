@@ -65,10 +65,13 @@ const manualStop = ref<boolean>(props.time !== undefined)
 
 const showList = ref<boolean>(false)
 
+const containerRef = ref<HTMLDivElement | null>(null)
+
+const slideRefs = ref<HTMLDivElement[]>([])
+
 const { translateFull, translatePartial, translateAnimation } = useCarousel({
   slidePos,
-  items,
-  slideId: props.slideId
+  slideRefs,
 })
 
 const render = useRender(open)
@@ -139,8 +142,9 @@ const onTouchStart = (e: TouchEvent) => {
 
 const onTouchMove = (e: TouchEvent) => {
   if (!touched.value) return
+  if(!containerRef.value) return
   touchEndPos.value = e.targetTouches[0].clientX
-  const viewWidth = document.getElementById('carouselView')?.offsetWidth
+  const viewWidth = containerRef.value.offsetWidth
   if (viewWidth) {
     const translate = ((touchEndPos.value - touchStartPos.value) / viewWidth) * span.value
     translatePartial(translate, TRANSLATE_TYPE)
@@ -171,8 +175,9 @@ const onMouseStart = (e: MouseEvent) => {
 const onMouseMove = (e: MouseEvent) => {
   e.preventDefault()
   if (!clicked.value) return
+  if(!containerRef.value) return
   mouseEndPos.value = e.clientX
-  const viewWidth = document.getElementById('carouselView')?.offsetWidth
+  const viewWidth = containerRef.value.offsetWidth
   if (viewWidth) {
     const translate = ((mouseEndPos.value - mouseStartPos.value) / viewWidth) * span.value
     translatePartial(translate, TRANSLATE_TYPE)
@@ -249,7 +254,7 @@ watchEffect((onStop) => {
         </div>
 
         <div
-          id="carouselView"
+          ref="containerRef"
           class="carousel-view"
           @touchstart="onTouchStart"
           @touchmove="onTouchMove"
@@ -261,6 +266,7 @@ watchEffect((onStop) => {
         >
           <div
             v-for="(item, idx) in items"
+            ref="slideRefs"
             :key="item.id"
             :id="`${slideId}-${idx}`"
             :style="itemStyle"
