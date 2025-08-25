@@ -36,20 +36,6 @@ const TRANSLATE_TYPE = 'horizontal'
 
 const { items } = toRefs(props)
 
-const slidePos = ref<number>(0)
-
-const touchStartPos = ref<number>(0)
-const touchEndPos = ref<number>(0)
-const touched = ref<boolean>(false)
-const touchSwiped = ref<boolean>(false)
-
-const mouseStartPos = ref<number>(0)
-const mouseEndPos = ref<number>(0)
-const clicked = ref<boolean>(false)
-const clickSwiped = ref<boolean>(false)
-
-const manualStop = ref<boolean>(props.time !== undefined)
-
 const showList = ref<boolean>(false)
 
 const listRef = ref<HTMLDivElement>()
@@ -58,20 +44,36 @@ const containerRef = ref<HTMLDivElement | null>(null)
 
 const slideRefs = ref<HTMLDivElement[]>([])
 
-const { translateFull, translatePartial, translateAnimation } = useCarousel({
+const isReSlide = computed<boolean>(() => props.infinite || props.autoPlay)
+
+const {
   slidePos,
-  slideRefs
+  manualStop,
+  clicked,
+  touched,
+  handlePrevSlide,
+  handleNextSlide,
+  onTouchStart,
+  onTouchMove,
+  onTouchEnd,
+  onMouseStart,
+  onMouseMove,
+  onMouseEnd,
+  jumpToSlide,
+} = useCarousel({
+  time: props.time,
+  hasManualStop: props.hasManualStop,
+  isReSlide,
+  containerRef,
+  slideRefs,
+  translateType: TRANSLATE_TYPE
 })
 
 const render = useRender(showList)
 
 useClickOutside(listRef, showList)
 
-const span = computed<number>(() => 100)
-
 const modeClassName = computed<string>(() => `carousel-${props.mode}`)
-
-const isReSlide = computed<boolean>(() => props.infinite || props.autoPlay)
 
 const prevBtnDisabled = computed<boolean>(() => !isReSlide.value && slidePos.value === 0)
 
@@ -87,102 +89,12 @@ const nextBtnDisabledClassName = computed<string>(() =>
 
 const showListClassName = computed<string>(() => (showList.value ? 'responsive-list-active' : ''))
 
-const jumpToSlide = (pos: number) => {
-  slidePos.value = pos
-  translateFull(pos, TRANSLATE_TYPE)
-}
-
-const handleManualStop = () => {
-  clearInterval(interval)
-  if (props.hasManualStop) manualStop.value = false
-}
-
-const handlePrevSlide = () => {
-  let newPos = slidePos.value
-  if (newPos > 0) newPos--
-  else if (isReSlide.value) newPos = props.items.length - 1
-  translateFull(newPos, TRANSLATE_TYPE)
-  slidePos.value = newPos
-}
-
-const handleNextSlide = () => {
-  let newPos = slidePos.value
-  if (newPos < props.items.length - 1) newPos++
-  else if (isReSlide.value) newPos = 0
-  translateFull(newPos, TRANSLATE_TYPE)
-  slidePos.value = newPos
-}
-
 const onPrev = () => {
   handlePrevSlide()
 }
 
 const onNext = () => {
   handleNextSlide()
-}
-
-const onTouchStart = (e: TouchEvent) => {
-  touchEndPos.value = e.targetTouches[0].clientX
-  touchStartPos.value = e.targetTouches[0].clientX
-  touched.value = true
-  translateAnimation('fast')
-  handleManualStop()
-}
-
-const onTouchMove = (e: TouchEvent) => {
-  if (!touched.value) return
-  if (!containerRef.value) return
-  touchEndPos.value = e.targetTouches[0].clientX
-  const viewWidth = containerRef.value.offsetWidth
-  if (viewWidth) {
-    const translate = ((touchEndPos.value - touchStartPos.value) / viewWidth) * span.value
-    translatePartial(translate, TRANSLATE_TYPE)
-    touchSwiped.value = true
-  }
-}
-
-const onTouchEnd = () => {
-  if (!touchSwiped.value) return
-  if (touchEndPos.value - touchStartPos.value > 75) handlePrevSlide()
-  else if (touchEndPos.value - touchStartPos.value < -75) handleNextSlide()
-  else jumpToSlide(slidePos.value)
-  translateAnimation('slow')
-  touched.value = false
-  touchSwiped.value = false
-  manualStop.value = true
-}
-
-const onMouseStart = (e: MouseEvent) => {
-  e.preventDefault()
-  mouseEndPos.value = e.clientX
-  mouseStartPos.value = e.clientX
-  clicked.value = true
-  translateAnimation('fast')
-  handleManualStop()
-}
-
-const onMouseMove = (e: MouseEvent) => {
-  e.preventDefault()
-  if (!clicked.value) return
-  if (!containerRef.value) return
-  mouseEndPos.value = e.clientX
-  const viewWidth = containerRef.value.offsetWidth
-  if (viewWidth) {
-    const translate = ((mouseEndPos.value - mouseStartPos.value) / viewWidth) * span.value
-    translatePartial(translate, TRANSLATE_TYPE)
-    clickSwiped.value = true
-  }
-}
-
-const onMouseEnd = () => {
-  if (!clickSwiped.value) return
-  if (mouseEndPos.value - mouseStartPos.value > 100) handlePrevSlide()
-  else if (mouseEndPos.value - mouseStartPos.value < -100) handleNextSlide()
-  else jumpToSlide(slidePos.value)
-  translateAnimation('slow')
-  clicked.value = false
-  clickSwiped.value = false
-  manualStop.value = true
 }
 
 watchEffect((onStop) => {
