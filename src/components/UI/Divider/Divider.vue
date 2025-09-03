@@ -8,13 +8,16 @@ export interface DividerProps {
   rootStyle?: StyleValue
   type?: DividerType
   placement?: ContentPlacement
+  verticalSize?: number
   plain?: boolean
+  dashed?: boolean
 }
 
 const props = withDefaults(defineProps<DividerProps>(), {
   rootClassName: '',
   type: 'horizontal',
-  placement: 'left'
+  placement: 'left',
+  verticalSize: 100
 })
 
 const slots = useSlots()
@@ -23,23 +26,34 @@ const layout = useLayoutStore()
 
 const hasContent = computed<boolean>(() => slots.default !== undefined)
 
-const placementClassName = computed<string>(() => `divider-horizontal-${props.placement}`)
+const placementClassName = computed<string>(() => `divider-${props.placement}`)
 
-const plainClassName = computed<string>(() => (props.plain ? `divider-horizontal-plain` : ''))
+const plainClassName = computed<string>(() => (props.plain ? 'divider-plain' : ''))
 
-const themeClassName = computed<string>(() => `divider-horizontal-${layout.theme}`)
+const dashedClassName = computed<string>(() => (props.dashed ? 'divider-dashed' : ''))
+
+const inlineClassName = computed<string>(() => (props.type === 'vertical' ? 'divider-inline' : ''))
+
+const themeClassName = computed<string>(() => `divider-${layout.theme}`)
+
+const verticalStyle = computed<StyleValue>(() => ({ height: `${props.verticalSize}px` }))
 </script>
 
 <template>
   <div
-    v-if="type === 'horizontal'"
     :style="rootStyle"
-    :class="['divider-horizontal', placementClassName, plainClassName, themeClassName, rootClassName]"
+    :class="['divider', placementClassName, plainClassName, dashedClassName, inlineClassName, themeClassName, rootClassName]"
   >
-    <div v-if="hasContent" class="horizontal-content">
-      <slot></slot>
+    <div v-if="type === 'horizontal'" class="divider-horizontal">
+      <div v-if="hasContent" class="horizontal-content">
+        <slot></slot>
+      </div>
+    </div>
+
+    <div v-if="type === 'vertical'" :style="verticalStyle" class="divider-vertical">
+      <div v-if="hasContent" class="vertical-content">
+        <slot></slot>
+      </div>
     </div>
   </div>
-
-  <div :style="rootStyle" :class="['divider-vertical', rootClassName]" />
 </template>
