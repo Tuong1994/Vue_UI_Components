@@ -1,38 +1,22 @@
 .button {
-  min-width: max-content;
-  border: 0.5px solid $bg-gray;
+  width: max-content;
   background: $bg-slate;
+  border: 0.5px solid $bg-gray;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   position: relative;
   transition: opacity $transition-time-sm $transition-fn, background-color $transition-time-md $transition-fn,
     box-shadow 0.1s $transition-fn;
   * {
     margin: 0;
-    transition: all $transition-time-xs $transition-fn;
   }
   &:hover {
     opacity: 0.8;
   }
-  .button-loading-icon {
-    margin-right: $m-1 - 0.5;
+  .button-icon {
+    margin-right: calc($m-1 / 2);
   }
-}
-
-.button-color {
-  *,
-  path {
-    color: $text-white;
-  }
-}
-
-.button-ghost {
-  background: $bg-white;
-}
-
-.button-dark.button-ghost {
-  background: $bg-dark;
 }
 
 // Shape
@@ -46,7 +30,7 @@
 
 // Size
 .button-sm {
-  padding: $p-1 - 0.8 $p-1 - 0.6;
+  padding: $p-1 - 0.8 $p-1 - 0.4;
   font-size: $text-xs;
   * {
     font-size: $text-xs;
@@ -66,59 +50,66 @@
 }
 
 // Color
-.button-blue {
-  border-color: $bg-blue;
-  background: $bg-blue;
-  &:active {
-    box-shadow: 0 0 0 3px $bg-blue-rgba-sm;
+.button-color {
+  *,
+  path {
+    color: $text-white !important;
   }
 }
 
-.button-green {
-  border-color: $bg-green;
-  background: $bg-green;
+.button-blue {
+  background: $bg-blue;
+  border-color: $bg-blue;
   &:active {
-    box-shadow: 0 0 0 3px $bg-green-rgba-sm;
+    animation: pulse-blue $transition-time-xs linear;
   }
 }
 
 .button-red {
-  border-color: $bg-red;
   background: $bg-red;
+  border-color: $bg-red;
   &:active {
-    box-shadow: 0 0 0 3px $bg-red-rgba-sm;
+    animation: pulse-red $transition-time-xs linear;
+  }
+}
+
+.button-green {
+  background: $bg-green;
+  border-color: $bg-green;
+  &:active {
+    animation: pulse-green $transition-time-xs linear;
   }
 }
 
 .button-orange {
-  border-color: $bg-orange;
   background: $bg-orange;
+  border-color: $bg-orange;
   &:active {
-    box-shadow: 0 0 0 3px $bg-orange-rgba-sm;
+    animation: pulse-orange $transition-time-xs linear;
   }
 }
 
 .button-yellow {
-  border-color: $bg-yellow;
   background: $bg-yellow;
+  border-color: $bg-yellow;
   &:active {
-    box-shadow: 0 0 0 3px $bg-yellow-rgba-sm;
+    animation: pulse-yellow $transition-time-xs linear;
   }
 }
 
 .button-purple {
-  border-color: $bg-purple;
   background: $bg-purple;
+  border-color: $bg-purple;
   &:active {
-    box-shadow: 0 0 0 3px $bg-purple-rgba-sm;
+    animation: pulse-purple $transition-time-xs linear;
   }
 }
 
 .button-pink {
-  border-color: $bg-pink;
   background: $bg-pink;
+  border-color: $bg-pink;
   &:active {
-    box-shadow: 0 0 0 3px $bg-pink-rgba-sm;
+    animation: pulse-pink $transition-time-xs linear;
   }
 }
 
@@ -126,30 +117,27 @@
   border-color: $bg-black;
   background: $bg-black;
   &:active {
-    box-shadow: 0 0 0 3px $bg-black-rgba-xs;
+    animation: pulse-black $transition-time-xs linear;
   }
 }
 
 // Ghost
+.button-ghost {
+  background: $bg-white;
+}
+
+.button-dark.button-ghost {
+  background: $bg-dark;
+}
+
 .button-ghost-blue {
   border-color: $bg-blue;
   *,
   path {
-    color: $text-blue;
+    color: $text-blue !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-blue-rgba-sm;
-  }
-}
-
-.button-ghost-green {
-  border-color: $bg-green;
-  *,
-  path {
-    color: $text-green;
-  }
-  &:active {
-    box-shadow: 0 0 0 3px $bg-green-rgba-sm;
+    animation: pulse-blue $transition-time-xs linear;
   }
 }
 
@@ -157,10 +145,21 @@
   border-color: $bg-red;
   *,
   path {
-    color: $text-red;
+    color: $text-red !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-red-rgba-sm;
+    animation: pulse-red $transition-time-xs linear;
+  }
+}
+
+.button-ghost-green {
+  border-color: $bg-green;
+  *,
+  path {
+    color: $text-green !important;
+  }
+  &:active {
+    animation: pulse-green $transition-time-xs linear;
   }
 }
 
@@ -168,10 +167,10 @@
   border-color: $bg-orange;
   *,
   path {
-    color: $text-orange;
+    color: $text-orange !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-orange-rgba-sm;
+    animation: pulse-orange $transition-time-xs linear;
   }
 }
 
@@ -179,10 +178,10 @@
   border-color: $bg-yellow;
   *,
   path {
-    color: $text-yellow;
+    color: $text-yellow !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-yellow-rgba-sm;
+    animation: pulse-yellow $transition-time-xs linear;
   }
 }
 
@@ -190,10 +189,10 @@
   border-color: $bg-purple;
   *,
   path {
-    color: $text-purple;
+    color: $text-purple !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-purple-rgba-sm;
+    animation: pulse-purple $transition-time-xs linear;
   }
 }
 
@@ -201,10 +200,10 @@
   border-color: $bg-pink;
   *,
   path {
-    color: $text-pink;
+    color: $text-pink !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-pink-rgba-sm;
+    animation: pulse-pink $transition-time-xs linear;
   }
 }
 
@@ -212,10 +211,10 @@
   border-color: $bg-black;
   *,
   path {
-    color: $text-black;
+    color: $text-black !important;
   }
   &:active {
-    box-shadow: 0 0 0 3px $bg-black-rgba-xs;
+    animation: pulse-black $transition-time-xs linear;
   }
 }
 
@@ -232,21 +231,102 @@
   }
 }
 
-// Loading
+// Loading;
 .button-loading {
-  user-select: none;
-  pointer-events: none;
   cursor: not-allowed;
-  opacity: 0.6;
+  user-select: none;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.5;
+  }
+  &:active {
+    box-shadow: unset;
+  }
 }
 
 // Disabled
 .button-disabled {
+  border-color: $bg-slate;
+  background: $bg-slate !important;
+  color: $text-gray;
   user-select: none;
   cursor: not-allowed;
-  background: $bg-slate;
-  border-color: $bg-gray;
   * {
     color: $text-gray;
+  }
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 $bg-blue-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-blue-rgba-trans;
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 $bg-red-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-red-rgba-trans;
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 $bg-green-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-green-rgba-trans;
+  }
+}
+
+@keyframes pulse-orange {
+  0% {
+    box-shadow: 0 0 0 0 $bg-orange-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-orange-rgba-trans;
+  }
+}
+
+@keyframes pulse-yellow {
+  0% {
+    box-shadow: 0 0 0 0 $bg-yellow-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-yellow-rgba-trans;
+  }
+}
+
+@keyframes pulse-purple {
+  0% {
+    box-shadow: 0 0 0 0 $bg-purple-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-purple-rgba-trans;
+  }
+}
+
+@keyframes pulse-pink {
+  0% {
+    box-shadow: 0 0 0 0 $bg-pink-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-pink-rgba-trans;
+  }
+}
+
+@keyframes pulse-black {
+  0% {
+    box-shadow: 0 0 0 0 $bg-black-rgba-sm;
+  }
+  100% {
+    box-shadow: 0 0 0 15px $bg-black-rgba-trans;
   }
 }

@@ -4,8 +4,6 @@
     min-width: max-content;
     background: $bg-slate;
     padding-left: $p-1 - 0.5;
-    border-top-left-radius: $rounded;
-    border-bottom-left-radius: $rounded;
     .title-item {
       padding: $p-1 $p-2;
       margin: $m-1 0;
@@ -31,9 +29,13 @@
     background: $bg-gray;
   }
   .tabs-vertical-content {
-    background: $bg-white;
-    transition: background-color $transition-time-sm $transition-fn;
-    & > * {
+    .content-item {
+      background: $bg-white;
+      opacity: 0;
+      transition: opacity $transition-time-sm $transition-fn;
+    }
+    .content-item-active {
+      opacity: 1;
       animation: fade $transition-time-md $transition-fn;
     }
   }
@@ -177,6 +179,11 @@
 .tabs-vertical-dark {
   .tabs-vertical-title {
     background: $bg-black;
+    .title-item {
+      &:hover {
+        background: $bg-dark;
+      }
+    }
     .title-item-active {
       background: $bg-dark;
       &:hover {
@@ -185,6 +192,8 @@
     }
   }
   .tabs-vertical-content {
-    background: $bg-dark;
+    .content-item {
+      background: $bg-dark;
+    }
   }
 }

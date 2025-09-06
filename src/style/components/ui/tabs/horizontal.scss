@@ -9,6 +9,7 @@
     display: flex;
     align-items: flex-end;
     overflow: hidden;
+    transition: all $transition-time-sm $transition-fn;
     &:hover {
       overflow-x: auto;
     }
@@ -17,7 +18,7 @@
       width: $w-10;
       height: $h-4;
       padding: $p-1 - 0.4;
-      transition: all $transition-time-md $transition-fn;
+      transition: all $transition-time-sm $transition-fn;
       cursor: pointer;
       .item-inner {
         height: $h-3;
@@ -54,8 +55,17 @@
   }
   .tabs-horizontal-content {
     width: $w-full;
-    background: $bg-white;
-    & > * {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    .content-item {
+      width: $w-full;
+      background: $bg-white;
+      opacity: 0;
+      transition: opacity $transition-time-md $transition-fn;
+    }
+    .content-item-active {
+      opacity: 1;
       animation: fade $transition-time-md $transition-fn;
     }
   }
@@ -236,19 +246,22 @@
     background: $bg-black;
     .head-item {
       .item-inner {
-        background: $bg-dark;
-      }
-    }
-    .head-item-active {
-      .item-inner {
-        box-shadow: 0 0 5px $bg-black;
+        background: $bg-black;
         &:hover {
           background: $bg-dark;
         }
       }
     }
+    .head-item-active {
+      .item-inner {
+        background: $bg-dark;
+        box-shadow: 0 0 5px $bg-black;
+      }
+    }
   }
   .tabs-horizontal-content {
-    background: $bg-dark;
+    .content-item {
+      background: $bg-dark;
+    }
   }
 }
