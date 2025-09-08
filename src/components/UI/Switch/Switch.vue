@@ -30,11 +30,20 @@ const handleSwitch = (e: Event) => {
 </script>
 
 <template>
-  <input
-    type="checkbox"
-    :style="rootStyle"
-    :checked="switched"
-    :class="['switch', colorClassName, sizeClassName, rootClassName]"
-    @input="handleSwitch"
-  />
+  <div :class="['switch', colorClassName, sizeClassName, rootClassName]">
+    <label>
+      <input
+        type="checkbox"
+        class="switch-input"
+        :style="rootStyle"
+        :checked="switched"
+        @input="handleSwitch"
+      />
+      <div className="switch-slider">
+        <div className="slider-dot">
+          <div className="dot-center"></div>
+        </div>
+      </div>
+    </label>
+  </div>
 </template>
