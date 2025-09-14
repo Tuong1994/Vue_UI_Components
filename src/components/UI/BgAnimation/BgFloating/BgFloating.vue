@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<BgFloadingProps>(), {
   shape: 'square',
   count: 80,
   zIndex: 0,
-  fullScreen: false
+  fullScreen: true
 })
 
 const layout = useLayoutStore()
