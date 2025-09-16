@@ -9,6 +9,7 @@ import useParticles from './useParticles'
 interface BgParticlesProps {
   rootClassName?: string
   rootStyle?: StyleValue
+  id?: string;
   hasColor?: boolean
   fullScreen?: boolean
   color?: LayoutColor
@@ -18,6 +19,7 @@ interface BgParticlesProps {
 
 const props = withDefaults(defineProps<BgParticlesProps>(), {
   rootClassName: '',
+  id: 'tsparticles',
   hasColor: false,
   zIndex: 0,
   fullScreen: true
@@ -47,8 +49,8 @@ const style = computed<StyleValue>(() => ({
 <template>
   <div :style="style" :class="['bg-particles', rootClassName]">
     <vue-particles
-      id="tsparticles"
       class="bg-particles-view"
+      :id="id"
       :key="layout.theme"
       :options="particlesOptions"
       @particles-loaded="particlesLoaded"
