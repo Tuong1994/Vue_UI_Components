@@ -56,7 +56,7 @@ const imageSize = computed<StyleValue>(() => {
   return { width: 'auto', height: 'auto' }
 })
 
-const inlineStyle = computed<StyleValue>(() => ({ ...(rootStyle?.value as object), imageSize }))
+const inlineStyle = computed<StyleValue>(() => ({ ...(rootStyle?.value as object), ...(imageSize.value as object) }))
 
 const handleLoad = () => (loading.value = false)
 
