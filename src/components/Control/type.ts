@@ -1,9 +1,11 @@
-import type { ComponentColor, ComponentShape } from '@/common/type'
+import type { ComponentColor, ComponentPlacement, ComponentShape } from '@/common/type'
 import type { RuleExpression } from 'vee-validate'
 
 export type ControlColor = Exclude<ComponentColor, 'white' | 'gray'>
 
 export type ControlShape = Exclude<ComponentShape, 'circle'>
+
+export type ControlDropdownPlacement = Exclude<ComponentPlacement, 'top' | 'bottom'>
 
 export type FormRule = RuleExpression<any>
 

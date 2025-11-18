@@ -413,6 +413,16 @@
   }
 }
 
+// Placement
+.tree-select-right {
+  .tree-select-wrap {
+    .wrap-option {
+      left: unset;
+      right: 0;
+    }
+  }
+}
+
 // Theme
 .tree-select-light {
   .wrap-group {
@@ -457,7 +467,7 @@
       border-color: $bg-blue;
     }
     &:focus-within {
-      border-color: $bg-blue;
+      box-shadow: 0 0 0 3px $bg-blue-rgba-sm;
     }
     .control-tags {
       background: $bg-blue;
@@ -481,7 +491,7 @@
       border-color: $bg-red;
     }
     &:focus-within {
-      border-color: $bg-red;
+      box-shadow: 0 0 0 3px $bg-red-rgba-sm;
     }
     .control-tags {
       background: $bg-red;
@@ -505,7 +515,7 @@
       border-color: $bg-green;
     }
     &:focus-within {
-      border-color: $bg-green;
+      box-shadow: 0 0 0 3px $bg-green-rgba-sm;
     }
     .control-tags {
       background: $bg-green;
@@ -529,7 +539,7 @@
       border-color: $bg-orange;
     }
     &:focus-within {
-      border-color: $bg-orange;
+      box-shadow: 0 0 0 3px $bg-orange-rgba-sm;
     }
     .control-tags {
       background: $bg-orange;
@@ -553,7 +563,7 @@
       border-color: $bg-yellow;
     }
     &:focus-within {
-      border-color: $bg-yellow;
+      box-shadow: 0 0 0 3px $bg-yellow-rgba-sm;
     }
     .control-tags {
       background: $bg-yellow;
@@ -577,7 +587,7 @@
       border-color: $bg-purple;
     }
     &:focus-within {
-      border-color: $bg-purple;
+      box-shadow: 0 0 0 3px $bg-purple-rgba-sm;
     }
     .control-tags {
       background: $bg-purple;
@@ -601,7 +611,7 @@
       border-color: $bg-pink;
     }
     &:focus-within {
-      border-color: $bg-pink;
+      box-shadow: 0 0 0 3px $bg-pink-rgba-sm;
     }
     .control-tags {
       background: $bg-pink;

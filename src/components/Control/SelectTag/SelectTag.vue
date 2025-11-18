@@ -8,7 +8,8 @@ import type {
   Option,
   FormRule,
   ControlColor,
-  ControlShape
+  ControlShape,
+  ControlDropdownPlacement
 } from '@/components/Control/type.ts'
 import SelectTagControl from './SelectTagControl.vue'
 import SelectTagOption from './SelectTagOption.vue'
@@ -30,6 +31,7 @@ export interface SelectTagProps {
   sizes?: ComponentSize
   color?: ControlColor
   shape?: ControlShape
+  placement?: ControlDropdownPlacement;
   async?: boolean
   loading?: boolean
   disabled?: boolean
@@ -49,6 +51,7 @@ const props = withDefaults(defineProps<SelectTagProps>(), {
   sizes: 'md',
   color: 'blue',
   shape: 'square',
+  placement: 'left',
   name: '',
   async: false,
   loading: false,
@@ -124,6 +127,8 @@ const sizeClassName = computed<string>(() => `select-${controlSize.value}`)
 const colorClassName = computed<string>(() => `select-${controlColor.value}`)
 
 const shapeClassName = computed<string>(() => `select-${controlShape.value}`)
+
+const placementClassName = computed<string>(() => `select-${props.placement}`)
 
 const gapClassName = computed<string>(() => (form?.isVee ? `select-gap-${controlSize.value}` : ''))
 
@@ -219,6 +224,7 @@ watchEffect(() => {
       sizeClassName,
       colorClassName,
       shapeClassName,
+      placementClassName,
       bottomClassName,
       errorClassName,
       themeClassName,

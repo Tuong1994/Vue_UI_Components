@@ -3,7 +3,7 @@ import { ref, computed, withDefaults, toRefs, useSlots, watchEffect, inject, typ
 import { useField } from 'vee-validate'
 import { useRender, useClickOutside, useDetectBottom } from '@/hooks'
 import type { ComponentSize } from '@/common/type'
-import type { ControlColor, ControlShape, FormRule, SelectDate } from '@/components/Control/type'
+import type { ControlColor, ControlDropdownPlacement, ControlShape, FormRule, SelectDate } from '@/components/Control/type'
 import type { RangeDateValue } from './type'
 import DatePickerControl from './DatePickerControl.vue'
 import DatePickerCalender from './DatePickerCalendar.vue'
@@ -27,6 +27,7 @@ export interface DatePickerProps {
   sizes?: ComponentSize
   color?: ControlColor
   shape?: ControlShape
+  placement?: ControlDropdownPlacement;
   required?: boolean
   optional?: boolean
   hasReset?: boolean
@@ -41,6 +42,7 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
   sizes: 'md',
   color: 'blue',
   shape: 'square',
+  placement: 'left',
   format: 'DD/MM/YYYY',
   hasReset: true,
   defaultDate: () => new Date()
@@ -104,6 +106,8 @@ const colorClassName = computed<string>(() => `datepicker-${controlColor.value}`
 
 const shapeClassName = computed<string>(() => `datepicker-${controlShape.value}`)
 
+const placementClassName = computed<string>(() => `datepicker-${props.placement}`)
+
 const gapClassName = computed<string>(() => (form?.isVee ? `datepicker-gap-${controlSize.value}` : ''))
 
 const bottomClassName = computed<string>(() => (bottom?.value ? 'datepicker-bottom' : ''))
@@ -151,6 +155,7 @@ watchEffect(() => {
       colorClassName,
       sizeClassName,
       shapeClassName,
+      placementClassName,
       gapClassName,
       bottomClassName,
       errorClassName,

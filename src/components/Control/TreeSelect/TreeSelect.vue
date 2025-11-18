@@ -8,7 +8,8 @@ import type {
   Option,
   FormRule,
   ControlColor,
-  ControlShape
+  ControlShape,
+  ControlDropdownPlacement
 } from '@/components/Control/type.ts'
 import TreeSelectControl from './TreeSelectControl.vue'
 import TreeSelectOption from './TreeSelectOption.vue'
@@ -30,6 +31,7 @@ export interface TreeSelectProps {
   sizes?: ComponentSize
   color?: ControlColor
   shape?: ControlShape
+  placement?: ControlDropdownPlacement
   async?: boolean
   loading?: boolean
   disabled?: boolean
@@ -49,6 +51,7 @@ const props = withDefaults(defineProps<TreeSelectProps>(), {
   sizes: 'md',
   color: 'blue',
   shape: 'square',
+  placement: 'left',
   name: '',
   async: false,
   loading: false,
@@ -125,6 +128,8 @@ const sizeClassName = computed<string>(() => `tree-select-${controlSize.value}`)
 const colorClassName = computed<string>(() => `tree-select-${controlColor.value}`)
 
 const shapeClassName = computed<string>(() => `tree-select-${controlShape.value}`)
+
+const placementClassName = computed<string>(() => `tree-select-${props.placement}`)
 
 const gapClassName = computed<string>(() => (form?.isVee ? `tree-select-gap-${controlSize.value}` : ''))
 
@@ -218,6 +223,7 @@ watchEffect(() => {
       sizeClassName,
       colorClassName,
       shapeClassName,
+      placementClassName,
       bottomClassName,
       errorClassName,
       themeClassName,
