@@ -11,6 +11,7 @@ import useLangStore from '@/stores/LangStore'
 export interface PaginationProps {
   rootClassName?: string
   rootStyle?: StyleValue
+  page?: number;
   total?: number
   limit?: number
   ghost?: boolean
@@ -26,6 +27,7 @@ export interface PaginationProps {
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   rootClassName: '',
+  page: 1,
   total: 100,
   limit: 10,
   color: 'blue',
@@ -45,7 +47,7 @@ const layout = useLayoutStore()
 
 const t = useLangStore()
 
-const currentPage = ref<number>(1)
+const currentPage = ref<number>(props.page)
 
 const { pageRange, totalPages } = usePagination({
   siblingCount: 1,
