@@ -55,7 +55,7 @@ const slots = useSlots()
 
 const t = useLangStore()
 
-const emits = defineEmits(['onCheck', 'onInput', 'onBlur'])
+const emits = defineEmits(['onCheck', 'onBlur'])
 
 const isCheck = ref<boolean>(false)
 
@@ -99,9 +99,7 @@ const handleChange = (e: Event) => {
     else return veeOnChange(veeValue.value)
   }
 
-  emits('onCheck', checked)
-  if (checked) emits('onInput', value)
-  else emits('onInput', '')
+  emits('onCheck', checked, value)
 }
 
 const handleBlur = (e: Event) => emits('onBlur', e)
