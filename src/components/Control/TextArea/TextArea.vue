@@ -62,7 +62,7 @@ const layout = useLayoutStore()
 
 const t = useLangStore()
 
-const emits = defineEmits(['update:modelValue', 'onBlur'])
+const emits = defineEmits(['update:modelValue', 'onBlur', 'onFocus'])
 
 const inputRef = ref<HTMLInputElement | null>(null)
 
@@ -117,6 +117,8 @@ const handleBlur = (e: FocusEvent) => {
   emits('onBlur', e)
 }
 
+const handleFocus = (e: FocusEvent) => emits('onFocus', e)
+
 const handleClearInput = () => {
   if (form?.isVee) setValue('')
   emits('update:modelValue', '')
@@ -162,6 +164,7 @@ watchEffect(() => {
             :class="['control-box', inputClassName]"
             @input="handleChange"
             @blur="handleBlur"
+            @focus="handleFocus"
           />
 
           <div v-if="showClearIcon" class="control-action" @click="handleClearInput">
